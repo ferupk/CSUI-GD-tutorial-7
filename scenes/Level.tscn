@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://65h4c0mrp6k7"]
+[gd_scene load_steps=16 format=3 uid="uid://65h4c0mrp6k7"]
 
 [ext_resource type="PackedScene" path="res://Scenes/Box.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/Switch.gd" id="2_0o47k"]
 [ext_resource type="PackedScene" uid="uid://pgpoceo3aird" path="res://scenes/Player.tscn" id="2_23oda"]
 
 [sub_resource type="StandardMaterial3D" id="3"]
@@ -18,6 +19,102 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="4"]
 material = SubResource("6")
+
+[sub_resource type="Animation" id="Animation_a4svf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3, 25.0375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:surface_material_override/0")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_er13d"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_qpjj0"]
+resource_name = "Switch Off"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 3, 25.0375), Vector3(0, 3, 25.338), Vector3(0, 3, 25.038)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:surface_material_override/0")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_er13d")]
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm032"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_rbh58"]
+resource_name = "Switch On"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 3, 25.0375), Vector3(0, 3, 25.338), Vector3(0, 3, 25.038)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:surface_material_override/0")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_cm032")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yw0ft"]
+_data = {
+"RESET": SubResource("Animation_a4svf"),
+"Switch Off": SubResource("Animation_qpjj0"),
+"Switch On": SubResource("Animation_rbh58")
+}
 
 [sub_resource type="BoxShape3D" id="5"]
 
@@ -68,9 +165,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 25.0375)
 mesh = SubResource("4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Switch"]
+script = ExtResource("2_0o47k")
+light = NodePath("../../OmniLight3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Switch/StaticBody3D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yw0ft")
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Switch/StaticBody3D"]
 shape = SubResource("5")
 
 [node name="Player" parent="." instance=ExtResource("2_23oda")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0333, 0)
