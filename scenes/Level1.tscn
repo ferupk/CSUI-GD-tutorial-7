@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bua315twdou60"]
+
+[ext_resource type="PackedScene" uid="uid://pgpoceo3aird" path="res://scenes/objects/Player.tscn" id="1_ogqah"]
+[ext_resource type="PackedScene" uid="uid://cncbqvih76jm4" path="res://scenes/World1.tscn" id="2_36upq"]
+[ext_resource type="PackedScene" uid="uid://c0goxtbrhv6pm" path="res://scenes/objects/Flag.tscn" id="3_u13ay"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="World1" parent="." instance=ExtResource("2_36upq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+
+[node name="Player" parent="." instance=ExtResource("1_ogqah")]
+
+[node name="Flag" parent="." instance=ExtResource("3_u13ay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+scene_name = "WinScreen"

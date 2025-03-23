@@ -7,7 +7,7 @@ func _ready():
 	pass
 
 
-func _process(delta):
+func _process(_delta):
 	var collider = get_collider()
 
 	if is_colliding() and collider is Interactable:

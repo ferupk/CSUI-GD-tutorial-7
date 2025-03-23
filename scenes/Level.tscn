@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://65h4c0mrp6k7"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Box.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://b3gg0quijsjvo" path="res://scenes/objects/Box.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/Switch.gd" id="2_0o47k"]
-[ext_resource type="PackedScene" uid="uid://pgpoceo3aird" path="res://scenes/Player.tscn" id="2_23oda"]
+[ext_resource type="PackedScene" uid="uid://pgpoceo3aird" path="res://scenes/objects/Player.tscn" id="2_23oda"]
 
 [sub_resource type="StandardMaterial3D" id="3"]
 albedo_color = Color(0.498039, 0.498039, 0.498039, 1)

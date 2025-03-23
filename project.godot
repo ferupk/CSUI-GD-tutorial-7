@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Basic 3D Game Mechanics"
-run/main_scene="res://Scenes/Level.tscn"
+run/main_scene="res://scenes/Level1.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 

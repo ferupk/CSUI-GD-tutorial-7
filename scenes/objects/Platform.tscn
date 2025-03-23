@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://jv1c2bh70uly"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej06r"]
+albedo_color = Color(0.922644, 0.526465, 0.218807, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2ego"]
+albedo_color = Color(0.99165, 0.909339, 0.660493, 1)
+
+[node name="Platform" type="CSGCombiner3D"]
+use_collision = true
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 1, 2.1, 1, 1.25, 0)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 12
+material = SubResource("StandardMaterial3D_ej06r")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+use_collision = true
+radius = 2.1
+height = 0.2
+sides = 12
+material = SubResource("StandardMaterial3D_n2ego")
