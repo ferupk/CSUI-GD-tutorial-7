@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @export var speed: float = 10.0
+@export var sprint_multiplier: float = 1.3
 @export var acceleration: float = 5.0
 @export var gravity: float = 9.8
 @export var jump_power: float = 5.0
@@ -43,9 +44,13 @@ func _physics_process(delta):
 			movement_vector += head.basis.x
 
 		movement_vector = movement_vector.normalized()
-			
-		velocity.x = lerp(velocity.x, movement_vector.x * speed, acceleration * delta)
-		velocity.z = lerp(velocity.z, movement_vector.z * speed, acceleration * delta)
+
+		var current_speed = speed
+		if Input.is_action_pressed("sprint"):
+			current_speed *= sprint_multiplier
+
+		velocity.x = lerp(velocity.x, movement_vector.x * current_speed, acceleration * delta)
+		velocity.z = lerp(velocity.z, movement_vector.z * current_speed, acceleration * delta)
 
 		# Apply gravity
 		if not is_on_floor():
@@ -60,7 +65,7 @@ func _physics_process(delta):
 
 func _disable_movement():
 	in_control = false
-	velocity = Vector3(0,0,0)
+	velocity = Vector3(0, 0, 0)
 
 
 func kill():
