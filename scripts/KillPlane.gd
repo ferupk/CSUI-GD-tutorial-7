@@ -1,6 +1,6 @@
 extends Area3D
 
-var death_screen = load("res://scenes/DeathMenu.tscn")
+var death_screen = load("res://scenes/DeathScreen.tscn")
 
 
 func _on_body_entered(body: Node3D) -> void:
@@ -12,4 +12,4 @@ func _on_body_entered(body: Node3D) -> void:
 		add_child(death_screen.instantiate())
 		
 		# Prevent further triggers
-		set_monitoring(false)
+		set_deferred("monitoring", false)
