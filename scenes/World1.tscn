@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cncbqvih76jm4"]
+[gd_scene load_steps=10 format=3 uid="uid://cncbqvih76jm4"]
 
 [ext_resource type="PackedScene" uid="uid://dcp5f0lkvubvb" path="res://scenes/objects/ObjLamp.tscn" id="1_08uql"]
 [ext_resource type="Texture2D" uid="uid://duqevfk5lwxq0" path="res://assets/textures/rock_wall_10_diff_1k.png" id="1_uaxvc"]
 [ext_resource type="Texture2D" uid="uid://bq2nxgaixbsuh" path="res://assets/textures/rock_wall_10_nor_gl_1k.png" id="2_6iksb"]
 [ext_resource type="Texture2D" uid="uid://blv4g38nmbw4r" path="res://assets/textures/rock_wall_10_rough_1k.png" id="3_7rkdm"]
 [ext_resource type="PackedScene" uid="uid://jv1c2bh70uly" path="res://scenes/objects/Platform.tscn" id="4_1lklv"]
+[ext_resource type="Script" path="res://scripts/KillPlane.gd" id="4_7o7lp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xqy0"]
 albedo_color = Color(0.729202, 0.291955, 0, 1)
@@ -13,6 +14,9 @@ roughness_texture = ExtResource("3_7rkdm")
 normal_enabled = true
 normal_texture = ExtResource("2_6iksb")
 uv1_scale = Vector3(4, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7c2g"]
+size = Vector3(15, 0.1, 30)
 
 [sub_resource type="Environment" id="Environment_ichxp"]
 tonemap_mode = 2
@@ -36,6 +40,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 4.5)
 flip_faces = true
 size = Vector3(15, 5, 30)
 material = SubResource("StandardMaterial3D_8xqy0")
+
+[node name="KillPlane" type="Area3D" parent="Room1/Pit"]
+script = ExtResource("4_7o7lp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room1/Pit/KillPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45, 0)
+shape = SubResource("BoxShape3D_t7c2g")
 
 [node name="Objects" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -81,3 +92,5 @@ omni_range = 15.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -18)
 light_energy = 3.0
 omni_range = 15.0
+
+[connection signal="body_entered" from="Room1/Pit/KillPlane" to="Room1/Pit/KillPlane" method="_on_body_entered"]

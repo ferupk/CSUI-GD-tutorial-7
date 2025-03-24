@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var gravity: float = 9.8
 @export var jump_power: float = 5.0
 @export var mouse_sensitivity: float = 0.3
+@export var in_control: bool = true
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -29,28 +30,38 @@ func _input(event):
 
 
 func _physics_process(delta):
-	var movement_vector = Vector3.ZERO
+	if in_control:
+		var movement_vector = Vector3.ZERO
 
-	if Input.is_action_pressed("movement_forward"):
-		movement_vector -= head.basis.z
-	if Input.is_action_pressed("movement_backward"):
-		movement_vector += head.basis.z
-	if Input.is_action_pressed("movement_left"):
-		movement_vector -= head.basis.x
-	if Input.is_action_pressed("movement_right"):
-		movement_vector += head.basis.x
+		if Input.is_action_pressed("movement_forward"):
+			movement_vector -= head.basis.z
+		if Input.is_action_pressed("movement_backward"):
+			movement_vector += head.basis.z
+		if Input.is_action_pressed("movement_left"):
+			movement_vector -= head.basis.x
+		if Input.is_action_pressed("movement_right"):
+			movement_vector += head.basis.x
 
-	movement_vector = movement_vector.normalized()
+		movement_vector = movement_vector.normalized()
+			
+		velocity.x = lerp(velocity.x, movement_vector.x * speed, acceleration * delta)
+		velocity.z = lerp(velocity.z, movement_vector.z * speed, acceleration * delta)
 
-	velocity.x = lerp(velocity.x, movement_vector.x * speed, acceleration * delta)
-	velocity.z = lerp(velocity.z, movement_vector.z * speed, acceleration * delta)
+		# Apply gravity
+		if not is_on_floor():
+			velocity.y -= gravity * delta
 
-	# Apply gravity
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+		# Jumping
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = jump_power
 
-	# Jumping
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_power
+		move_and_slide()
 
-	move_and_slide()
+
+func _disable_movement():
+	in_control = false
+	velocity = Vector3(0,0,0)
+
+
+func kill():
+	_disable_movement()
