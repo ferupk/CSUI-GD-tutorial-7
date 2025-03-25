@@ -72,10 +72,10 @@ func _physics_process(delta):
 		move_and_slide()
 
 
-func _disable_movement():
+func disable_movement():
 	in_control = false
 	velocity = Vector3(0, 0, 0)
 
 
 func kill():
-	_disable_movement()
+	disable_movement()
