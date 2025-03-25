@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var speed: float = 10.0
 @export var sprint_multiplier: float = 1.3
+@export var crouch_multiplier: float = 0.6
 @export var acceleration: float = 5.0
 @export var gravity: float = 9.8
 @export var jump_power: float = 5.0
@@ -10,8 +11,10 @@ extends CharacterBody3D
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 var camera_x_rotation: float = 0.0
+var is_crouching = false
 
 
 func _ready():
@@ -45,8 +48,14 @@ func _physics_process(delta):
 
 		movement_vector = movement_vector.normalized()
 
+		if Input.is_action_just_pressed("crouch"):
+			is_crouching = !is_crouching
+			animation.play("Crouch Down" if is_crouching else "Crouch Up")
+
 		var current_speed = speed
-		if Input.is_action_pressed("sprint"):
+		if is_crouching:
+			current_speed *= crouch_multiplier
+		elif Input.is_action_pressed("sprint"):
 			current_speed *= sprint_multiplier
 
 		velocity.x = lerp(velocity.x, movement_vector.x * current_speed, acceleration * delta)
