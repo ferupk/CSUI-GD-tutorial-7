@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxulk11fnx774"
-path.s3tc="res://.godot/imported/Lightbulb_metallicRoughness.png-a85ca74683f4e6c51ad9f86db914d857.s3tc.ctex"
+path.etc2="res://.godot/imported/Lightbulb_metallicRoughness.png-a85ca74683f4e6c51ad9f86db914d857.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/led_lightbulb/textures/Lightbulb_metallicRoughness.png"
-dest_files=["res://.godot/imported/Lightbulb_metallicRoughness.png-a85ca74683f4e6c51ad9f86db914d857.s3tc.ctex"]
+dest_files=["res://.godot/imported/Lightbulb_metallicRoughness.png-a85ca74683f4e6c51ad9f86db914d857.etc2.ctex"]
 
 [params]
 
