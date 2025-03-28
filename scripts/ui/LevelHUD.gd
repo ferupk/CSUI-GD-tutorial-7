@@ -10,5 +10,5 @@ func _ready() -> void:
 	level_label.text = level_name
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	bulb_counter.text = "Bulbs: " + str(Inventory.bulbs)

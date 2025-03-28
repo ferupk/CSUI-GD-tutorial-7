@@ -11,15 +11,15 @@ offset_left = 32.0
 offset_top = 24.0
 offset_right = 272.0
 offset_bottom = 123.0
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 48
 text = "Level 1"
 
 [node name="BulbCounter" type="Label" parent="."]
 offset_left = 32.0
-offset_top = 120.0
+offset_top = 84.0
 offset_right = 153.0
-offset_bottom = 165.0
-theme_override_font_sizes/font_size = 32
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 24
 text = "Bulbs: 0"
 
 [node name="Crosshair" type="Label" parent="."]

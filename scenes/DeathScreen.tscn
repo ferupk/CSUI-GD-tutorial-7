@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dsxe88xn4mgcy"]
 
-[ext_resource type="Script" path="res://scripts/SceneButton.gd" id="1_ok3br"]
+[ext_resource type="Script" path="res://scripts/ReloadButton.gd" id="1_5ugyt"]
 
 [node name="DeathScreen" type="CanvasLayer"]
 layer = 2
@@ -35,6 +35,6 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 36
 text = "Retry"
 underline = 2
-script = ExtResource("1_ok3br")
+script = ExtResource("1_5ugyt")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LinkButton" to="MarginContainer/VBoxContainer/LinkButton" method="_on_pressed"]

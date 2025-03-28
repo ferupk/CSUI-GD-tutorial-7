@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcwps6rh6b4es"
-path.etc2="res://.godot/imported/Lightbulb_baseColor.png-0cdd3ef2b089acb960280e7ca978cedd.etc2.ctex"
+path.s3tc="res://.godot/imported/Lightbulb_baseColor.png-0cdd3ef2b089acb960280e7ca978cedd.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/led_lightbulb/textures/Lightbulb_baseColor.png"
-dest_files=["res://.godot/imported/Lightbulb_baseColor.png-0cdd3ef2b089acb960280e7ca978cedd.etc2.ctex"]
+dest_files=["res://.godot/imported/Lightbulb_baseColor.png-0cdd3ef2b089acb960280e7ca978cedd.s3tc.ctex"]
 
 [params]
 

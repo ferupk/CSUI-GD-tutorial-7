@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://jlt4y3m20s5g"]
+
+[ext_resource type="Script" path="res://scripts/StartLevel.gd" id="1_f7qs5"]
+[ext_resource type="PackedScene" uid="uid://bgj3oxsx4vb74" path="res://scenes/World2.tscn" id="1_fdqwc"]
+[ext_resource type="PackedScene" uid="uid://pgpoceo3aird" path="res://scenes/objects/Player.tscn" id="2_4txj4"]
+[ext_resource type="PackedScene" uid="uid://b5broc12ti52i" path="res://scenes/ui/LevelHUD.tscn" id="4_33kah"]
+[ext_resource type="PackedScene" uid="uid://c0goxtbrhv6pm" path="res://scenes/objects/Flag.tscn" id="5_b4gsg"]
+
+[node name="Level2" type="Node3D"]
+script = ExtResource("1_f7qs5")
+
+[node name="World2" parent="." instance=ExtResource("1_fdqwc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+
+[node name="Player" parent="." instance=ExtResource("2_4txj4")]
+
+[node name="Flag" parent="." instance=ExtResource("5_b4gsg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+scene_name = "WinScreen"
+
+[node name="LevelHUD" parent="." instance=ExtResource("4_33kah")]
+level_name = "2 - Light Up"
