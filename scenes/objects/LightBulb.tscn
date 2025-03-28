@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxdl8st16xe2r"]
+
+[ext_resource type="PackedScene" uid="uid://bdi5sxsg54t5m" path="res://assets/led_lightbulb/scene.gltf" id="1_3dlq6"]
+[ext_resource type="Script" path="res://scripts/LightBulb.gd" id="2_5i1mm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oj7qu"]
+radius = 0.38847
+height = 1.19506
+
+[node name="LightBulb" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0390652, 0)
+script = ExtResource("2_5i1mm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.225, 0)
+shape = SubResource("CapsuleShape3D_oj7qu")
+
+[node name="Model" parent="." instance=ExtResource("1_3dlq6")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 3.05176e-06, 0)
