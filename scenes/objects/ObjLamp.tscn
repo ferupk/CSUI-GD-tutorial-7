@@ -11,14 +11,14 @@ albedo_color = Color(0.287115, 0.153111, 0.0197028, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbyob"]
 albedo_color = Color(0.483759, 0.307644, 0.0872178, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohq5n"]
+albedo_color = Color(0.827451, 0.870588, 0.870588, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6oi48"]
 albedo_color = Color(1, 1, 0, 1)
 emission_enabled = true
 emission = Color(1, 1, 0, 1)
 emission_energy_multiplier = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohq5n"]
-albedo_color = Color(0.827451, 0.870588, 0.870588, 1)
 
 [node name="Lamp" type="StaticBody3D"]
 collision_layer = 2
@@ -44,14 +44,6 @@ radius = 0.1
 sides = 16
 material = SubResource("StandardMaterial3D_jbyob")
 
-[node name="HeadOn" type="CSGPolygon3D" parent="CSG"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89243, 0)
-polygon = PackedVector2Array(0, 0, 0, 1, 0.492218, 0.902018, 1, 0)
-mode = 1
-spin_degrees = 360.0
-spin_sides = 12
-material = SubResource("StandardMaterial3D_6oi48")
-
 [node name="HeadOff" type="CSGPolygon3D" parent="CSG"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89243, 0)
 polygon = PackedVector2Array(0, 0, 0, 1, 0.492218, 0.902018, 1, 0)
@@ -59,3 +51,11 @@ mode = 1
 spin_degrees = 360.0
 spin_sides = 12
 material = SubResource("StandardMaterial3D_ohq5n")
+
+[node name="HeadOn" type="CSGPolygon3D" parent="CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89243, 0)
+polygon = PackedVector2Array(0, 0, 0, 1, 0.492218, 0.902018, 1, 0)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 12
+material = SubResource("StandardMaterial3D_6oi48")
