@@ -66,6 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
 [node name="ObjLamp" parent="Objects" instance=ExtResource("1_08uql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 21)
+off_at_start = true
 
 [node name="ObjLamp2" parent="Objects" instance=ExtResource("1_08uql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 21)

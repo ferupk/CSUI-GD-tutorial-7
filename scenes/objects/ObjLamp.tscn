@@ -1,4 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcp5f0lkvubvb"]
+[gd_scene load_steps=7 format=3 uid="uid://dcp5f0lkvubvb"]
+
+[ext_resource type="Script" path="res://scripts/Lamp.gd" id="1_f5apg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rwcoc"]
+radius = 1.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wqx7"]
 albedo_color = Color(0.287115, 0.153111, 0.0197028, 1)
@@ -12,26 +17,45 @@ emission_enabled = true
 emission = Color(1, 1, 0, 1)
 emission_energy_multiplier = 2.0
 
-[node name="Lamp" type="CSGCombiner3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohq5n"]
+albedo_color = Color(0.827451, 0.870588, 0.870588, 1)
+
+[node name="Lamp" type="StaticBody3D"]
+collision_layer = 2
+script = ExtResource("1_f5apg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68898, 0)
+shape = SubResource("CylinderShape3D_rwcoc")
+
+[node name="CSG" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+[node name="Base" type="CSGCylinder3D" parent="CSG"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423296, 0)
 radius = 0.38572
 height = 0.851963
 cone = true
 material = SubResource("StandardMaterial3D_6wqx7")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+[node name="Pole" type="CSGCylinder3D" parent="CSG"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15736, 0)
 radius = 0.1
 sides = 16
 material = SubResource("StandardMaterial3D_jbyob")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+[node name="HeadOn" type="CSGPolygon3D" parent="CSG"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89243, 0)
 polygon = PackedVector2Array(0, 0, 0, 1, 0.492218, 0.902018, 1, 0)
 mode = 1
 spin_degrees = 360.0
 spin_sides = 12
 material = SubResource("StandardMaterial3D_6oi48")
+
+[node name="HeadOff" type="CSGPolygon3D" parent="CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89243, 0)
+polygon = PackedVector2Array(0, 0, 0, 1, 0.492218, 0.902018, 1, 0)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 12
+material = SubResource("StandardMaterial3D_ohq5n")
